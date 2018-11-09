@@ -1,16 +1,12 @@
 var n = 15
+const isDivisible = num => {
+    return !(num%3) && !(num%5) ? 'FuzzBuzz'
+    : !(num%3) ? 'Fuzz'
+    : !(num%5) ? 'Buzz'
+    : num;
+};
+
+
 for(var v = 1; v <= n; v++) {
-    switch (v) {
-        case v % 3 === 0 && v % 5 === 0:
-            console.log('FizzBuzz');
-            break;
-        case v % 3 === 0:
-            console.log('Fizz'); 
-            break;
-        case v % 5 === 0:
-            console.log('Buzz');
-            break;
-        default:
-            console.log('i');
-}
+    console.log(isDivisible(v));
 }
