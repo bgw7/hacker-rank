@@ -1,26 +1,26 @@
-subsetSum = (numbers, target, partial, counter) => {
-    var s, n, remaining;
-    var counter = 0;
-    partial = partial || [];
-    sum = (num1, num2) => num1 + num2;
+findCombinations = (cups, jar, combination) => {
+    var sumOfCups,
+        counter = 0;
+        combination = combination || [],
+        sum = (num1, num2) => num1 + num2;
   
-    s = partial.reduce(sum, 0);
+    sumOfCups = combination.reduce(sum, 0);
   
-    if (s === target) {
-        // console.log(partial) print or return combination used to get sum
+    if (sumOfCups === jar) {
+        // console.log(combination) print or return combination used to get sum
         return 1;
     }
   
-    if (s >= target) {
+    if (sumOfCups >= jar) {
       return 0;
     }
   
-    for (var i = 0; i < numbers.length; i++) {
-      n = numbers[i];
-      remaining = numbers.slice();
-      counter = counter + subsetSum(remaining, target, partial.concat([n]), counter);
+    for (var i = 0; i < cups.length; i++) {
+      var cup = cups[i];
+      var remaining = cups.slice();
+      counter = counter + findCombinations(remaining, jar, combination.concat([cup]));
     }
     return counter;
   };
 
-  console.log(subsetSum([1,2],6));  
+  console.log(findCombinations([1,2],6));  
